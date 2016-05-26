@@ -11,6 +11,7 @@
 |
 */
 
+/*
 Route::get('/', function () {
 
 	$people = ['Dave', 'Ashley', 'Luis', 'Josh', 'Abe'];
@@ -19,9 +20,14 @@ Route::get('/', function () {
 });
 
 Route::get('about', function(){ 
-	/*
-		returns a file from out views folder, in this case we have a folder called "pages" with a file called "about" within in, we
-		can use dot notation or we could do pages/about
-	*/
+	// returns a file from out views folder, in this case we have a 
+	// folder called "pages" with a file called "about" within in, we
+	// can use dot notation or we could do pages/about
 	return view('pages.about');
 });
+*/
+
+//the '@' calls the function 'home' in PagesController
+Route::get('/', 'PagesController@home');
+
+Route::get('/about', 'PagesController@about');
