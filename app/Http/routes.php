@@ -19,5 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('about', function(){ 
+	/*
+		returns a file from out views folder, in this case we have a folder called "pages" with a file called "about" within in, we
+		can use dot notation or we could do pages/about
+	*/
 	return view('pages.about');
 });

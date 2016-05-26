@@ -42,12 +42,14 @@
     <?php endforeach; ?>
     -->
 
+    <!-- Laravel syntax @unless (unless is an "if(!someCondition)") -->
     @unless (empty($people))
         Here are our people:
     @endunless
 
     @foreach($people as $person)
-        <li>{{ $person }}</li>
+        <!-- The double braces transalte to an "echo" statement -->
+        <li>{{ $person }}</li>  
     @endforeach
 
     </body>
