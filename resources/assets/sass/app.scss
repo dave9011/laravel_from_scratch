@@ -1,2 +1,9 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+$white: whitesmoke; 
+$bg-color: purple;
+
+body {
+	color: $white;
+	background: $bg-color;
+}

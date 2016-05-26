@@ -12,5 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+	//versioning the file will allows cahce busting
+    mix.sass('app.scss').version('css/app.css');
 });
