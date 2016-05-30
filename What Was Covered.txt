@@ -1,0 +1,33 @@
+Lesson 8: Defining Relationships with Eloquent ------------------------------------------------------
+
+Suppose we have a 'Post' and 'Note' class and we want to have a relationship between the notes
+of a particular post and vice versa.
+
+So we made our migration to create our notes table. Once the migration is ran, then we can go
+ahead and create our model, Note. (if we run the command "php artisan make:model Note -m" then the
+"-m" option tells artisan to run the migration beforehand.
+
+These are NOT the same.
+	1. $card->notes->first(): selects all notes and THEN it picks the first one
+	2. $card->notes()->first(): limits the initial query to one
+
+The importance is that the first one (no. 1) will first fetch every entry (so if we have 500 notes
+then it will retrieve 500 notes) and then select the first entry.  
+
+We can use "DB::listen( function($query) { var_dump( $query->sql ); } );" to have the query that is 
+ran when we execute a command. In this way, we can observe how the above two commands are different.
+
+Eloquent will "cache" relationships as part of the object after the first time we run the query.
+
+We can hard code the card_id into out Note object before we save it using "$note->card_id=[enter a
+card_id here]" or we can use an existing reference to a Card and save our Note as part of it using: 
+"$card->notes()->save($note)"
+
+We learned that we can also use this command to create and insert a new instance of Note:
+	"$card->notes()->create(['body'=>'a body message goes here']);
+
+*If you run this above command you will get a "MassAssignmentException", which is how Laravel protects
+you against potential attacks. If this was not in place then the user could potentially modify a
+field of an object that they shouldn't have access to. To get around this we have to explicitly say 
+what we are allowing to be modified, so in this case we go into Card.php and add 
+"protected $fillable = ['body'];"
