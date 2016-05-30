@@ -31,3 +31,24 @@ you against potential attacks. If this was not in place then the user could pote
 field of an object that they shouldn't have access to. To get around this we have to explicitly say 
 what we are allowing to be modified, so in this case we go into Card.php and add 
 "protected $fillable = ['body'];"
+
+
+Lesson 9: Forms -------------------------------------------------------------------------------------
+
+- Had to modify the Http/Kernel.php file in order to avoid getting a tokenmismatchexception when 
+making the 'POST' request
+
+*Feature alert!!! (route binding)
+- In our notes controller, we needed a way to get the card we are at. So, remember that in our
+routes file we had a line like "Route::post('cards/{card}/notes', 'NotesController@store');".
+Notice that here we pass the card (i.e. {card}). Because Laravel uses route binding, we can add 
+"Card $card" to our parameters in NotesController and it will pass in the card we are at.
+
+Notice one of the ways that we can store our Note is using the statement 
+"$card->notes()->create($request->all());". This is a valid argument to pass in because it returns
+an array of all the values in the request. Wouldn't that be a problem because don't we have no control
+over what is passed in? Nope, because we already established in our Model what fields are 'fillable'.
+
+We have many ways that we can add a Note to a Card. However, my preferred way would be the final method.
+Using this method we are more clear about the connection between a Card and a Note. This is in accord
+with the Principle Of Least Astonishment.

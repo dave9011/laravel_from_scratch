@@ -1,10 +1,5 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$black: #2b2b2b; 
-$bg-color: whitesmoke;
-
-body {
-	color: $black;
-	background: $bg-color;
-	font-family: sans-serif;
+ul {
+	-webkit-padding-start: 0;
 }

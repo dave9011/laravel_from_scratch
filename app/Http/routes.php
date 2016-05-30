@@ -37,3 +37,6 @@ Route::get('/cards', 'CardsController@index');
 Route::get('/cards/create', 'CardsController@create');
 
 Route::get('/cards/{card}', 'CardsController@show');
+
+//Handle the POST request from the 'Add Note' button
+Route::post('cards/{card}/notes', 'NotesController@store');
