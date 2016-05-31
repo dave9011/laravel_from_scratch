@@ -52,3 +52,17 @@ over what is passed in? Nope, because we already established in our Model what f
 We have many ways that we can add a Note to a Card. However, my preferred way would be the final method.
 Using this method we are more clear about the connection between a Card and a Note. This is in accord
 with the Principle Of Least Astonishment.
+
+Lesson 10: Updating Records and Eager Loading -------------------------------------------------------
+
+Because there is not much browser support for requests beyond GET and POST, we have to "fake" these
+by using the line "{{ method_field('PATCH') }}" in our edit.blade.php form. When we submit that form
+Laravel will check did the form have the "_method" name and when it does it will realize that the user
+wanted a custom request type so it will read it. In our case, we use a custom request called 'PATCH'
+and it will route that accordingly. We do the same for 'DELETE'.
+
+We want to eager load all records that we are going to need, so that we avoid running too many queries
+in a for each loop. This is an "n+1" problem.
+
+We don't want to go too far in URI nesting for our requests. For example, in this lesson we chose 
+to use 'notes/{note}/edit' rather than something like 'cards/{card}/notes/{note}/edit'

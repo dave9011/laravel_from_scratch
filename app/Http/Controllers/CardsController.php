@@ -34,6 +34,9 @@ class CardsController extends Controller
 	//**Important: the parameter name MUST BE THE SAME as the wildcard name in 
 	//the route.php get
     public function show(Card $card) {
+
+        //retrieve all our Cards along with their notes and users 
+        $card = Card::with('notes.user')->find($card->id); 
     	return view('cards.show', compact('card'));
     }
 
