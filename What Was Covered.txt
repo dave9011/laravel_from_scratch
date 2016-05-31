@@ -85,3 +85,24 @@ pass in the old input. Therefore, if we have a field, we can simply get the valu
 the redirect by using the old() method and giving it the name of the field. In this case, we have a
 field with the name 'body' so we can use old('body') to get its old content. If the field had a name
 'username' then we would call old('username').
+
+
+Lesson 12: Your Questions Answered -----------------------------------------------------------------
+
+- This lesson is actually a Q&A for Jeffrey, the series teacher. It has plenty of great questions
+in the comments that I suggest reading (https://laracasts.com/series/laravel-5-from-scratch/episodes/12).
+
+- I'm keeping this answer for the first question, which was one I had as well. It's a suggested
+worflow when starting on a project.
+
+	1. Decide the first feature/page I want to write.
+	2. Create a route, and direct the endpoint to a controller.
+	3. Create the controller, add the method, load an appropriate view.
+	4. Create the view, add some dummy text.
+	5. Load page in the browser to ensure it's all working.
+	6. Flesh out HTML.
+	7. Write CSS in app.scss file, while running gulp watch
+	8. Import "public/css/app.css" in the head tag of my view master page.
+	9. Rinse and repeat.
+
+
