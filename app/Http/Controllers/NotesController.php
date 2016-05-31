@@ -12,6 +12,10 @@ class NotesController extends Controller
 {
     //Laravel uses route binding, so because we had passed in the card in our routes, we can add "Card $card" to our parameters and it will pass in the card we are at
     public function store(Request $request, Card $card) {
+
+    	$this->validate($request, [
+    		'body' => 'required|min:10'
+    	]);
     	
     	/* Method 1:
     	 * $note = new Note;	//create a new Note
@@ -41,9 +45,9 @@ class NotesController extends Controller
     	*/
 
     	//Method 6:
-    	$card->addNote(
-    		new Note($request->all())
-    	);
+    	$note = new Note($request->all());
+    	//we are coding it here because we don't have a sign in implemeted yet that would allow us to get the current user's id
+    	$card->addNote($note, 1);
 
     	return back();	//redirect back
 

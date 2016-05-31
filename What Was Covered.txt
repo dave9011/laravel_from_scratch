@@ -53,16 +53,35 @@ We have many ways that we can add a Note to a Card. However, my preferred way wo
 Using this method we are more clear about the connection between a Card and a Note. This is in accord
 with the Principle Of Least Astonishment.
 
+
 Lesson 10: Updating Records and Eager Loading -------------------------------------------------------
 
-Because there is not much browser support for requests beyond GET and POST, we have to "fake" these
+- Because there is not much browser support for requests beyond GET and POST, we have to "fake" these
 by using the line "{{ method_field('PATCH') }}" in our edit.blade.php form. When we submit that form
 Laravel will check did the form have the "_method" name and when it does it will realize that the user
 wanted a custom request type so it will read it. In our case, we use a custom request called 'PATCH'
 and it will route that accordingly. We do the same for 'DELETE'.
 
-We want to eager load all records that we are going to need, so that we avoid running too many queries
+- We want to eager load all records that we are going to need, so that we avoid running too many queries
 in a for each loop. This is an "n+1" problem.
 
-We don't want to go too far in URI nesting for our requests. For example, in this lesson we chose 
+- We don't want to go too far in URI nesting for our requests. For example, in this lesson we chose 
 to use 'notes/{note}/edit' rather than something like 'cards/{card}/notes/{note}/edit'
+
+
+Lesson 11: Validation and More ----------------------------------------------------------------------
+
+- We don't want to use a hidden input in our HTML to pass in our data (in this case our user_id when 
+creating a note). This is because someone could actually modify the page source code and change the
+value that we use in the hidden input; therefore potentially adding whatever they want.
+
+-If we look at Controller.php, which all our controllers extend from, we see that it has a trait called
+"ValidatesRequests". We can see in that file that we have a method validate() which we can use.
+
+- Pay attention to this line "<textarea name="body" class="form-control">{{ old('body') }}</textarea>"
+ Notice how in the body of the textarea element we are echoing the contents of old('body'). What's
+happening here is that in our validation we do a redirect back to the previous page and we also
+pass in the old input. Therefore, if we have a field, we can simply get the value from the page before
+the redirect by using the old() method and giving it the name of the field. In this case, we have a
+field with the name 'body' so we can use old('body') to get its old content. If the field had a name
+'username' then we would call old('username').
