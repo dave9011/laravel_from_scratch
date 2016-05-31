@@ -106,3 +106,10 @@ worflow when starting on a project.
 	9. Rinse and repeat.
 
 
+Lesson 13: Authenticate Your Users -----------------------------------------------------------------
+
+- This lesson is covered in a different project, skip this one for the current one as it would
+complicate what we already have.
+
+- Important note: We want to implement authentication by using "php artisan make:auth" which will
+handle most of the underlying work for us. We also want to run this at THE BEGINNING OF OUR PROJECT.
