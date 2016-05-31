@@ -93,7 +93,7 @@ Lesson 12: Your Questions Answered ---------------------------------------------
 in the comments that I suggest reading (https://laracasts.com/series/laravel-5-from-scratch/episodes/12).
 
 - I'm keeping this answer for the first question, which was one I had as well. It's a suggested
-worflow when starting on a project.
+workflow when starting on a project.
 
 	1. Decide the first feature/page I want to write.
 	2. Create a route, and direct the endpoint to a controller.
@@ -113,3 +113,21 @@ complicate what we already have.
 
 - Important note: We want to implement authentication by using "php artisan make:auth" which will
 handle most of the underlying work for us. We also want to run this at THE BEGINNING OF OUR PROJECT.
+
+
+Lesson 14: Understanding Middleware ----------------------------------------------------------------
+
+- Think of your application as an onion. So when your request comes in we have to go through the 
+different layers of the onion to get to the core. "Middleware" would be those layers that you have to
+go through.
+
+- Each "Middleware" class has a handle() method that is responsible for processing the request in 
+some way and passing it on to the next level of our onion analogy.
+
+- The line below is a global middleware in our application. We can use "php artisan down" to put our
+application in a maintenance mode that will also let users know that we are in  a maintenace mode. We
+can use "php artisan up" to get it back up again. This is made easier by this middleware:
+
+	protected $middleware = [
+        	\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    	];  

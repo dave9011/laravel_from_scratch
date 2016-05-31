@@ -51,5 +51,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'csrf' => 'App\Http\Middleware\VerifyCsrfToken'// add it as a middleware route 
+
+        //this is our own middleware that we added to check for a user with admin provileges; I'm commenting it our because we haven't implemented users logged in
+        // 'admin' => \App\Http\Middleware\MustBeAdministrator::class
     ];
 }
