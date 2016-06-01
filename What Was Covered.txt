@@ -130,4 +130,19 @@ can use "php artisan up" to get it back up again. This is made easier by this mi
 
 	protected $middleware = [
         	\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-    	];  
+    	];
+
+
+Lesson 14: Flashing to the Session -----------------------------------------------------------------
+
+- We add a route for 'begin' from where we will pass a flash and then redirect to wherever we want. 
+That destination that we redirect to will have the flash message a SINGLE time, which is our desired
+behavior.
+
+- We also substituted our method for adding flash messages for a global helper function that we placed
+in our newly created helpers.php file. Once we create this and add our function there we can autoload
+it by adding it to the files that we autoload (to do this we modified our composer.json file). Once we
+modify this we can run the command composer dump-autoload' to make sure the change is reflected. From 
+there on we can simply call flash() from anywhere.
+
+  

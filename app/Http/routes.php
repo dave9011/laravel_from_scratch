@@ -32,6 +32,22 @@ Route::get('/', 'PagesController@home');
 
 Route::get('/about', 'PagesController@about');
 
+Route::get('/begin', function(){
+	//Method 1 to flash:
+	//Session::flash('flash_message', 'Method 1 flash message!');
+	//Method 2 to flash:
+	//session()->flash('flash_message', 'Method 2 flash message!');
+
+	/* We subsitute this for our new global method within our helpers.php: flash()
+	session()->flash('flash_message', 'You are now logged in! (not really, this is just for testing)');
+	session()->flash('flash_status', 'alert-success');
+	*/
+	
+	flash('You are now logged in! (not really, this is just for testing)', 'alert-success');
+
+	return redirect('/cards');
+});
+
 Route::get('/cards', 'CardsController@index');
 
 Route::get('/cards/create', 'CardsController@create');
